@@ -1,0 +1,1 @@
+web gunicorn linguaZone.wsgi:application --log-file - 
