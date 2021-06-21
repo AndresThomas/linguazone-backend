@@ -8,8 +8,10 @@ from Accounts.models import User
 
 class RegisterUser(ObtainAuthToken,APIView): #jerarquia de herencia
     def post(self, request, format = None):
-        print(request.data)
+        print(request.data,' registeuser line 11')
         serializer = UserSerializer(data = request.data)
+        print(serializer.is_valid())
+        
         if serializer.is_valid():
             user = serializer.save()
             datas = serializer.data
@@ -17,6 +19,7 @@ class RegisterUser(ObtainAuthToken,APIView): #jerarquia de herencia
             
             return Response(datas, status= status.HTTP_201_CREATED)
         else:
+            print(serializer.errors)
             return Response(serializer.errors, status= status.HTTP_400_BAD_REQUEST)
     
 
