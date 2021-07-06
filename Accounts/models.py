@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+from django.contrib.postgres.fields import ArrayField
 
 
 class UserManager(BaseUserManager):
@@ -69,6 +70,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=True)
     is_superuser = models.BooleanField(default=True)
+    lista = models.JSONField()
+    
 
     objects = UserManager()
 

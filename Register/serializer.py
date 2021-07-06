@@ -10,6 +10,7 @@ class UserSerializer(serializers.ModelSerializer):
     password = serializers.CharField()
     phone_number = serializers.CharField()
     rol = serializers.CharField()
+    lista = serializers.JSONField()
     
     def create(self, validate_data):
         instance = User()
@@ -17,9 +18,10 @@ class UserSerializer(serializers.ModelSerializer):
         instance.email = validate_data.get('email')
         instance.first_name = validate_data.get('first_name')
         instance.last_name = validate_data.get('last_name')
-        instance.role = validate_data.get('rol')
+        instance.rol = validate_data.get('rol')
         instance.set_password(validate_data.get('password'))
         instance.set_phone_number = '0000000000'
+        instance.lista = validate_data.get('lista')
         instance.save()
         return instance
     
