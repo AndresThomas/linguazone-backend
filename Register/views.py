@@ -64,6 +64,7 @@ class UsersList(APIView):
             if serializer.is_valid():
                 serializer.save()
                 datas = serializer.data
+                print(datas)
                 return Response(datas)
             else:
                 print(request.data) 
