@@ -24,19 +24,20 @@ class RegisterUser(ObtainAuthToken,APIView): #jerarquia de herencia
     
 
     def get(self, request, format = None):
-        print("Get in register")
-        print(request.user)
-        print(request.data)
+        print("Get in register 27")
+        print(request.query_params)
         
-        if( request.query_params.get('rol') == 'admin'):
-            queryset = User.objects.all()
-            serializer = UserSerializer(queryset, many = True)    
-        elif( request.query_params.get('rol') == 'teacher'):
-            queryset = User.objects.filter(rol='student')
+        if( request.query_params.get('rol') == 'teacher'):
+            print('students')
+            queryset = User.objects.all().filter(rol='student')
+            serializer = UserSerializer(queryset, many = True)
+        elif( request.query_params.get('rol') == 'student'):
+            print('teachers')
+            queryset = User.objects.all().filter(rol='teacher')
             serializer = UserSerializer(queryset, many = True)
         else:
             queryset = User.objects.all()
-            serializer = UserSerializer(queryset, many = True)
+            serializer = UserSerializer(queryset, many = True)    
         return Response(serializer.data)
 
 
