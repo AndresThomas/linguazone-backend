@@ -4,7 +4,7 @@ from django.contrib.postgres.fields import ArrayField
 
 
 class UserManager(BaseUserManager):
-    def create_user(self, first_name, last_name, username, email, rol,password=None):
+    def create_user(self, first_name, last_name, username, email,lista, rol,password=None):
         if not first_name:
             raise ValueError("Users must have a first name")
         if not last_name:
@@ -25,7 +25,8 @@ class UserManager(BaseUserManager):
             username=username,
             first_name=first_name,
             last_name=last_name,
-            rol=rol
+            rol=rol,
+            lista=lista
         )
         user.set_password(password)
         user.save(using=self._db)
@@ -48,8 +49,8 @@ class UserManager(BaseUserManager):
             password=password,
             first_name=first_name,
             last_name=last_name,
-            rol=rol
-
+            rol=rol,
+            lista={}
         )
         user.is_admin = True
         user.is_staff = True
@@ -68,8 +69,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     password = models.CharField(max_length=255)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=True)
-    is_admin = models.BooleanField(default=True)
-    is_superuser = models.BooleanField(default=True)
+    is_admin = models.BooleanField(default=False)
+    is_superuser = models.BooleanField(default=False)
     lista = models.JSONField()
     
 
