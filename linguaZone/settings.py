@@ -145,5 +145,7 @@ CORS_ORIGIN_ALLOW_ALL = False
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:4200",
     "http://127.0.0.1:4200",
-    "http://lzn.herokuapp.com"
+    "http://lzn.herokuapp.com",
+    "https://lzn.herokuapp.com",
+
 ]
