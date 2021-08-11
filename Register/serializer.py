@@ -26,6 +26,7 @@ class UserSerializer(serializers.ModelSerializer):
         return instance
     
     def validate_username(self, data):
+        print(data)
         users = User.objects.filter(username = data)
 
         if len(users) != 0:

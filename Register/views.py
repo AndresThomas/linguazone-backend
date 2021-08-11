@@ -58,19 +58,15 @@ class UsersList(APIView):
     
     def put(self,request,id,format = None):
         modify = self.get_object(id)
-        print(modify,' soy modify')
+
         if modify != 404:
             serializer = UserSerializer(modify, data=request.data)
-            print(serializer.is_valid(), ' is valid?')
             if serializer.is_valid():
                 serializer.save()
                 datas = serializer.data
-                print(datas)
                 return Response(datas)
             else:
-                print(request.data) 
-                print(serializer.errors)
-                return Response(serializer.errors, status= status.HTTP_400_BAD_REQUEST)
+                return Response("Ingrese un formato valido")
         else:
             return Response("Este elemento no existe")
 
