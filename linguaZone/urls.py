@@ -20,9 +20,9 @@ from django.urls.conf import include
 from rest_framework import routers, serializers, viewsets
 
 urlpatterns = [
-    path('docente/',include('Docente.urls')),
     path('api-auth/', include('rest_framework.urls')),
     path('admin/', admin.site.urls),
     path('register/',include('Register.urls')),
     path('login/',include('Login.urls')),
+    path('languages/',include('languages.urls'))
 ]

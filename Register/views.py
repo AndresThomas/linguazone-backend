@@ -61,12 +61,15 @@ class UsersList(APIView):
 
         if modify != 404:
             serializer = UserSerializer(modify, data=request.data)
+            print(serializer.is_valid(),' ******')
             if serializer.is_valid():
+                print('hi')
                 serializer.save()
                 datas = serializer.data
                 return Response(datas)
             else:
-                return Response("Ingrese un formato valido")
+                print(serializer.error)
+                return Response(serializer.errors, status= status.HTTP_400_BAD_REQUEST)
         else:
             return Response("Este elemento no existe")
 

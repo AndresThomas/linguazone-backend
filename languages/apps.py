@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class DocenteConfig(AppConfig):
+class LanguagesConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'Docente'
+    name = 'languages'
