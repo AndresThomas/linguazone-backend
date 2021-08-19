@@ -23,6 +23,7 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
     path('admin/', admin.site.urls),
     path('register/',include('Register.urls')),
+    path('languages/',include('languages.urls')),
     path('login/',include('Login.urls')),
-    path('languages/',include('languages.urls'))
+    
 ]
