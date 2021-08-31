@@ -58,14 +58,14 @@ class UsersList(APIView):
     
     def put(self,request,id,format = None):
         modify = self.get_object(id)
-
+        print(modify)
         if modify != 404:
-            serializer = UserSerializer(modify, data=request.data)
+            serializer = UserSerializer(instance= modify, data=request.data)
             print(serializer.is_valid(),' ******')
             if serializer.is_valid():
-                print('hi')
                 serializer.save()
                 datas = serializer.data
+                print(datas)
                 return Response(datas)
             else:
                 print(serializer.error)
