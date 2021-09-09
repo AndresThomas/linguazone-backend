@@ -6,7 +6,7 @@ class LanguageSerializer(serializers.ModelSerializer):
     language = serializers.CharField()
     teacher = serializers.CharField()
     level = serializers.CharField()
-    link = serializers.CharField()
+#    link = serializers.CharField()
     usn = serializers.CharField()
     
     def create(self, validate_data):
@@ -14,7 +14,7 @@ class LanguageSerializer(serializers.ModelSerializer):
         instance.language = validate_data.get('language')
         instance.teacher = validate_data.get('teacher')
         instance.level = validate_data.get('level')
-        instance.link = validate_data.get('link')
+        #instance.link = validate_data.get('link')
         instance.usn = validate_data.get('usn')
         instance.save()
         return instance
