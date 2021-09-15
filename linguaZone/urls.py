@@ -25,5 +25,6 @@ urlpatterns = [
     path('register/',include('Register.urls')),
     path('languages/',include('languages.urls')),
     path('login/',include('Login.urls')),
+    path('groups/',include('groups.urls')),
     
 ]

@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'Login','Register','languages',
     'rest_framework','Accounts',
     'corsheaders',
-    'rest_framework.authtoken'
+    'rest_framework.authtoken',
+    'groups'
 ]
 
 REST_FRAMEWORK = {
